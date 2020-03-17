@@ -1,0 +1,21 @@
+<!--
+<div style="height: 100%; width: 100%;border: 3px solid red">
+    <app-calendar [dataSource]="dataArray"
+    [language]="'en'"
+    (dayEvents)="dayEvents($event)" 
+    (newEvent)="addEvent($event)"></app-calendar>
+    https://ibb.co/zbd2kZN
+https://ibb.co/RPtdXdL
+</div>
+-->
+<div style="height: 100%; width: 100%;border: 1px solid gray;">
+
+    <ngx-event-calendar
+    [showAddButton]="true" 
+    [language]="'en'"
+    [dataSource]="dataArray"
+    (dayEvents)="selectDay($event)"
+    (newEvent)="addEvent($event)">
+    </ngx-event-calendar>
+</div>
+

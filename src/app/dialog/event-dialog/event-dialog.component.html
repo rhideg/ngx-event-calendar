@@ -1,0 +1,29 @@
+<div style="display: flex; flex-direction: row; justify-content: space-between;">
+    <h4>Events</h4>
+    <button mat-fab color="primary" (click)="addEvent()" class="add-button">
+        +
+    </button>
+</div>
+<mat-divider class="top-divider"></mat-divider>
+
+<div>
+    <h4 *ngIf="data.events.length == 0">Nincs esemény az adott napra!</h4>
+    <div class="row-items" *ngFor="let event of data.events" [ngStyle]="{ backgroundColor: event.color }">
+        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+            <div>
+                <b>Start:</b> {{ event.startDate | date: "yyyy-MM-dd HH:mm" }}
+                <b>End:</b> {{ event.endDate | date: "yyyy-MM-dd HH:mm" }}
+                {{ event.title }} - {{ event.desc }} - Created:{{ event.createdBy }}
+            </div>
+            <button (click)="editEvent(event)" class="edit-button">
+                <mat-icon>create</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div style="text-align: right;">
+    <button mat-raised-button color="primary" (click)="createICS()" class="add-button">
+        <mat-icon>system_update_alt</mat-icon><span class="export-button-label">EXPORT EVENTS</span>
+    </button>
+</div>

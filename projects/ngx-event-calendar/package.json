@@ -1,0 +1,16 @@
+{
+  "name": "ngx-event-calendar",
+  "version": "0.0.17",
+  "peerDependencies": {
+    "@angular/common": "^9.0.0",
+    "@angular/core": "^9.0.0"
+  },
+  "keywords": [
+    "angular",
+    "calendar",
+    "responsive",
+    "events",
+    "data source",
+    "select event"
+  ]
+}

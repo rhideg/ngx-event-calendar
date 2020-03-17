@@ -1,0 +1,35 @@
+h3 {
+    text-align: center;
+}
+
+.date-picker {
+    padding: 10px;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top:30px;
+}
+.first {
+    display: flex;
+    flex-direction: row;
+    justify-content: start center;
+}
+
+.second {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-full-width {
+    padding: 10px;
+}
+
+
+@media only screen and (max-width: 883px) {
+    .first {
+        flex-direction: column;
+    }
+
+  }

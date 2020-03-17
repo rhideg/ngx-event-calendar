@@ -1,0 +1,96 @@
+<div id="cont" class="box" (keydown.arrowleft)="previousMonthButtonClick()"
+  (keydown.arrowright)="nextMonthButtonClick()" (swipeleft)="nextMonthButtonClick()"
+  (swiperight)="previousMonthButtonClick()" style="height: 100%; ">
+  <div class="header-date" style="min-height: 60px;">
+
+    <button mat-icon-button class="buttons" (click)="previousMonthButtonClick()">
+      <mat-icon>
+        arrow_back_ios
+      </mat-icon>
+    </button>
+
+    <div style="display: flex; flex-direction: row; justify-content: center center;">
+      <button mat-icon-button (click)="addEventClicked()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <span>
+        {{ actDate }}
+      </span>
+      <button mat-icon-button (click)="showChangeDate = !showChangeDate">
+        <mat-icon *ngIf="!showChangeDate">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="showChangeDate">keyboard_arrow_up</mat-icon>
+
+      </button>
+    </div>
+    <button mat-icon-button class="buttons" (click)="nextMonthButtonClick()">
+      <mat-icon>
+        arrow_forward_ios
+      </mat-icon>
+    </button>
+
+
+  </div>
+
+  <div class="header-select-date" style="min-height: 30px;" *ngIf="showChangeDate">
+
+    <select name="year" class="selects" (change)="onYearChange($event)">
+      <option *ngFor="let y of years" [value]="y" [selected]="y === currentYear">{{ y }}
+      </option>
+    </select>
+
+    <select name="month" class="selects" (change)="onMonthChange($event)">
+      <option *ngFor="let m of months" [value]="m.id" [selected]="m.id === currentMonth">{{ m.name }}
+      </option>
+    </select>
+
+  </div>
+
+
+
+  <div class="calendar-container">
+    <div class="calendar-div">
+      <div class="weekdays-container" style="min-height: 30px;">
+        <div class="weekdays" *ngFor="let day of weekdays">
+         <span *ngIf="!isSmall">
+          {{day.name}}
+         </span>
+         <span *ngIf="isSmall">
+          {{day.shortName}}
+         </span>
+        </div>
+      </div>
+
+      <div class="cell-container" *ngFor="let item of arrCalendar" style="height: 100%;">
+        <div class="cell-item" (click)="openDialog(test)" *ngFor="let test of item" [ngStyle]="{
+                        backgroundColor:
+                          test.day == actDay &&
+                          test.month == actMonth - 1 &&
+                          test.year == actYear
+                            ? 'lightblue'
+                            : 'white'
+                      }" style="height: 100%;">
+          <div style="height: 100%; flex-direction: column; display: flex;">
+            <div>
+              <b class="calendar-days" [ngStyle]="{
+                  color: test.month == currentMonth ? 'black' : 'lightgray'
+                }">{{ test.day }}
+              </b>
+              <span *ngIf="test.events && test.events.length > 0 && isSmall" class="dot"></span>
+
+            </div>
+
+            <div *ngIf="!isSmall" style="height: 100%; overflow-x: hidden; overflow-y: scroll;">
+              <div class="row-items" *ngFor="let event of test.events" [ngStyle]="{ backgroundColor: event.color }">
+                {{event.id}}-
+                {{event.title}}-
+                {{event.desc}} </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

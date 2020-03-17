@@ -1,0 +1,136 @@
+<div id="cont" fxLayout="column" fxLayoutAlign="space-between center" (keydown.arrowleft)="previousMonthButtonClick()"
+  (keydown.arrowright)="nextMonthButtonClick()" (swipeleft)="nextMonthButtonClick()"
+  (swiperight)="previousMonthButtonClick()" style="height: 100%; ">
+
+  <div class="header-date" fxLayout="row" fxLayoutAlign="space-between center" style="min-height: 60px;">
+
+    <button mat-icon-button class="buttons" (click)="previousMonthButtonClick()">
+      <mat-icon>
+        arrow_back_ios
+      </mat-icon>
+    </button>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      
+      <button *ngIf="btnAddShow" mat-icon-button (click)="addEventClicked()">
+        <mat-icon>add</mat-icon>
+      </button>
+      
+      <span>
+        {{ actDate }}
+      </span>
+      
+      <button mat-icon-button (click)="showChangeDate = !showChangeDate">
+        <mat-icon *ngIf="!showChangeDate">keyboard_arrow_down</mat-icon>
+        <mat-icon *ngIf="showChangeDate">keyboard_arrow_up</mat-icon>
+
+      </button>
+       
+    </div>
+    
+    <button mat-icon-button class="buttons" (click)="nextMonthButtonClick()">
+      <mat-icon>
+        arrow_forward_ios
+      </mat-icon>
+    </button>
+
+
+  </div>
+
+  <div class="header-select-date" fxLayout="row" fxLayoutAlign="center center" style="height: auto;"
+    *ngIf="showChangeDate">
+    <div fxLayout="row" fxLayout.xs="column"  fxLayoutAlign="space-between center" [@enterAnimation]>
+
+        <mat-form-field style="margin: 5px;">
+            <mat-select (selectionChange)="onYearChange($event)" [(ngModel)]="currentYear">
+              <mat-option *ngFor="let y of years" [value]="y" >{{ y }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+      <mat-form-field style="margin: 5px;">
+          <mat-select (selectionChange)="onMonthChange($event)" [(ngModel)]="currentMonth">
+            <mat-option *ngFor="let m of months" [value]="m.id">{{ m.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    </div>
+  </div>
+
+
+
+  <div class="calendar-container" fxLayout="column" fxFlex>
+
+    <!-- Weekdays header -->
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="weekdays-container" style="height: 30px;">
+
+      <div class="weekdays" *ngFor="let day of weekdays" fxLayout="row" fxLayoutAlign="center center">
+        <span *ngIf="!isSmall">
+          {{day.name}}
+        </span>
+        <span *ngIf="isSmall">
+          {{day.shortName}}
+        </span>
+      </div>
+
+    </div>
+
+    <!-- Days body -->
+    <!-- Months -->
+    <div fxFlex fxLayout="column" style="height: 100%;">
+
+      <div fxFlex class="cell-container" *ngFor="let item of arrCalendar">
+
+        <div fxFlex class="cell-item" fxLayout="row" fxLayoutAlign="space-between stretch" (click)="openDialog(test)"
+          [ngStyle]="{
+          backgroundColor:
+            test.day == actDay &&
+            test.month == actMonth - 1 &&
+            test.year == actYear
+              ? 'lightblue'
+              : 'white'}" *ngFor="let test of item" style="height: 100%; width: 100%;">
+
+          <div fxLayout="column" style="height: 100%; width: 100%; ">
+
+            <div>
+              <b class="calendar-days" [ngStyle]="{
+                          color: test.month == currentMonth ? 'black' : 'lightgray'
+                        }">{{ test.day }}
+              </b>
+              <span *ngIf="test.events && test.events.length > 0 && isSmall" class="dot"></span>
+            </div>
+
+            <div fxFlex *ngIf="!isSmall" style="height: 100%; overflow-x: hidden;">
+
+              <div class="row-items" *ngFor="let event of test.events; let i = index"
+                [ngStyle]="{ backgroundColor: event.color }">
+                <span style="font-weight: bold;">
+                  {{event.title}}
+                </span>
+                <span *ngIf="test.day == (event.startDate | date: 'dd')"> - {{event.desc}}</span>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+<!--[ngClass]="(event.startDate | date: 'dd') == (event.endDate | date: 'dd') ? 'row-items' 
+                : ((event.startDate | date: 'dd') == test.day ? 'row-items-multi-first' 
+                : ((event.endDate | date: 'dd') == test.day ? 'row-items-multi-last' : 'row-items-multi') )" 
+              
+                Multi day event:
+              <span *ngIf="test.day == (event.startDate | date: 'dd')" >{{event.title}}</span> &nbsp;
+                <span *ngIf="test.day == (event.startDate | date: 'dd')"> - {{event.desc}}</span> </div>
+              -->

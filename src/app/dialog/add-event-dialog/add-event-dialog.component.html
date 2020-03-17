@@ -1,0 +1,81 @@
+<h4>Add New Event</h4>
+<mat-divider></mat-divider>
+
+<div class="container">
+
+    <div class="first">
+    
+        <mat-form-field class="date-picker">
+            <input readonly matInput [matDatepicker]="picker1" placeholder="Start date:" [(ngModel)]="startDate" (click)="picker1.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="date-picker">
+            <mat-label>Hours</mat-label>
+            <mat-select [(ngModel)]="startHours">
+                <mat-option *ngFor="let h of hours" [value]="h.id">{{ h.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="date-picker">
+            <mat-label>Minutes</mat-label>
+            <mat-select [(ngModel)]="startMinutes">
+                <mat-option *ngFor="let m of minutes" [value]="m.id">{{ m.minute }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </div>
+    <div class="first">
+        <mat-form-field class="date-picker">
+            <input readonly matInput [matDatepicker]="picker2" placeholder="End date:" [(ngModel)]="endDate" (click)="picker2.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker touchUi="true" #picker2></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="date-picker">
+            <mat-label>Hours</mat-label>
+            <mat-select [(ngModel)]="endHours">
+                <mat-option *ngFor="let h of hours" [value]="h.id">{{ h.name }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="date-picker">
+            <mat-label>Minutes</mat-label>
+            <mat-select [(ngModel)]="endMinutes">
+                <mat-option *ngFor="let m of minutes" [value]="m.id">{{ m.minute }}</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+
+    </div>
+
+    <div class="second">
+    <mat-form-field class="example-full-width" (keydown.enter)="btn_SaveClick()">
+        <input matInput placeholder="Title:" [(ngModel)]="newEvent.title">
+    </mat-form-field>
+       
+    <mat-form-field class="example-full-width" (keydown.enter)="btn_SaveClick()">
+        <input matInput placeholder="Description:" [(ngModel)]="newEvent.desc">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" (keydown.enter)="btn_SaveClick()">
+        <input matInput placeholder="Created By:" [(ngModel)]="newEvent.createdBy">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Colours</mat-label>
+        <mat-select [(ngModel)]="newEvent.color">
+            <mat-option *ngFor="let color of colours" [value]="color.value">{{ color.name }}</mat-option>
+        </mat-select>
+
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="btn_SaveClick()" 
+    (keydown.enter)="btn_SaveClick()" [disabled]="!startDate || !startHours || !startMinutes || !endDate || !endHours ||
+    !endMinutes || !newEvent.title || (startDate > endDate) || (startDate >= endDate && startHours > endHours) ||
+    (startDate >= endDate && startHours >= endHours && startMinutes >= endMinutes)">SAVE</button>
+</div>
+
+</div>
