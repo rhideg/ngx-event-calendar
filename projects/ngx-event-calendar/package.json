@@ -1,6 +1,6 @@
 {
   "name": "ngx-event-calendar",
-  "version": "0.0.17",
+  "version": "1.0.0",
   "peerDependencies": {
     "@angular/common": "^9.0.0",
     "@angular/core": "^9.0.0"
@@ -12,5 +12,10 @@
     "events",
     "data source",
     "select event"
-  ]
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rhideg/ngx-event-calendar"
+  }
 }

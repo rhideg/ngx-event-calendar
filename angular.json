@@ -137,13 +137,13 @@
           "options": {
             "tsConfig": "projects/my-lib/tsconfig.lib.json",
             "project": "projects/my-lib/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/my-lib/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -177,13 +177,13 @@
           "options": {
             "tsConfig": "projects/ng-calendar/tsconfig.lib.json",
             "project": "projects/ng-calendar/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/ng-calendar/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -217,13 +217,13 @@
           "options": {
             "tsConfig": "projects/ngx-rh-calendar/tsconfig.lib.json",
             "project": "projects/ngx-rh-calendar/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/ngx-rh-calendar/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -257,13 +257,13 @@
           "options": {
             "tsConfig": "projects/ngx-events-calendar/tsconfig.lib.json",
             "project": "projects/ngx-events-calendar/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/ngx-events-calendar/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -297,13 +297,13 @@
           "options": {
             "tsConfig": "projects/ngx-event-calendar/tsconfig.lib.json",
             "project": "projects/ngx-event-calendar/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/ngx-event-calendar/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -327,5 +327,8 @@
       }
     }
   },
-  "defaultProject": "de-calendar"
+  "defaultProject": "de-calendar",
+  "cli": {
+    "analytics": false
+  }
 }
