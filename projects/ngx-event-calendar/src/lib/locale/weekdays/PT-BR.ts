@@ -1,4 +1,4 @@
-export const weekdayPT-BR = [
+export const PTBR = [
     { id: '0', name: 'Segunda', shortName: 'Seg' },
     { id: '1', name: 'Terça', shortName: 'Ter'  },
     { id: '2', name: 'Quarta', shortName: 'Qua'  },

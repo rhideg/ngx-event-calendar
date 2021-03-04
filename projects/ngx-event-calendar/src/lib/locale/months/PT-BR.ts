@@ -1,4 +1,4 @@
-export const mounthsPT-BR = [
+export const PTBR = [
   { id: 0, name: 'Janeiro' },
   { id: 1, name: 'Fevereiro' },
   { id: 2, name: 'Março' },

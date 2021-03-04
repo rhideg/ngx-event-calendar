@@ -2,10 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@a
 import { EventData } from './interface/event-data';
 import { yearsLabel } from './locale/years';
 import { formatDate } from '@angular/common';
-import { mounthsHU } from './locale/monthsHU';
-import { weekdayHU } from './locale/weekdaysHU';
-import { mounthsEN } from './locale/monthsEN';
-import { weekdayEN } from './locale/weekdaysEN';
+import * as months  from './locale/months';
+import * as weekdays from './locale/weekdays';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
@@ -213,15 +211,19 @@ export class NgxEventCalendarComponent implements OnInit {
   changeLanguage() {
     if (!this.language) {
       this.language = 'hu';
-      this.months = mounthsHU;
-      this.weekdays = weekdayHU;
+      this.months = months.HU;
+      this.weekdays = weekdays.HU;
     }
+
     if (this.language === 'en') {
-      this.months = mounthsEN;
-      this.weekdays = weekdayEN;
+      this.months = months.EN;
+      this.weekdays = weekdays.EN;
+    } else if (this.language === 'pt-br'){
+      this.months = months.PTBR;
+      this.weekdays = weekdays.PTBR;
     } else {
-      this.months = mounthsHU;
-      this.weekdays = weekdayHU;
+      this.months = months.HU;
+      this.weekdays = weekdays.HU;
     }
   }
 

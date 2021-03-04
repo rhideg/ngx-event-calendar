@@ -1,4 +1,4 @@
-export const mounthsEN = [
+export const EN = [
   { id: 0, name: 'January' },
   { id: 1, name: 'February' },
   { id: 2, name: 'March' },

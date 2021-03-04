@@ -1,4 +1,4 @@
-export const weekdayHU = [
+export const HU = [
     { id: '0', name: 'Hétfő', shortName: 'H'  },
     { id: '1', name: 'Kedd', shortName: 'K'  },
     { id: '2', name: 'Szerda', shortName: 'Sze'  },
